@@ -1,4 +1,4 @@
-from lab1.dimacs import remove_edges
+from utils.dimacs import remove_edges
 from typing import Union
 
 

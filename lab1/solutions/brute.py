@@ -1,4 +1,4 @@
-import lab1.dimacs as dimacs
+import utils.dimacs as dimacs
 from itertools import combinations
 
 

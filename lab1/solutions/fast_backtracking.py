@@ -1,5 +1,5 @@
 from typing import Union
-from lab1.dimacs import remove_vertex, restore_vertex
+from utils.dimacs import remove_vertex, restore_vertex
 
 
 def fast_sol(G: list[set[int]], k: int, chosen_vertices: set = None) -> Union[bool, set]:

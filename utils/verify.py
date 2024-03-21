@@ -2,8 +2,8 @@
 # Test solution for the VertexCover problem
 
 
-from dimacs import *
-from sys import *
+import utils.dimacs
+import sys
 
 
 def loadSolution(name):
@@ -14,19 +14,19 @@ def loadSolution(name):
     return C
 
 
-if len(argv) < 3:
+if len(sys.argv) < 3:
     print("Invocation:")
     print("  python verify.py graph-file solution-file")
     exit()
 
 try:
-    G = loadGraph(argv[1])
-    C = loadSolution(argv[2])
+    G = dimacs.loadGraph(sys.argv[1])
+    C = loadSolution(sys.argv[2])
 except IOError:
     print("IOError")
 
-E = edgeList(G)
-if isVC(E, C):
+E = dimacs.edgeList(G)
+if dimacs.isVC(E, C):
     print("OK", len(C))
 else:
     print("Fail!")

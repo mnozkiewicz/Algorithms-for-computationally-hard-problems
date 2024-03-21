@@ -1,8 +1,8 @@
 import sys
 import threading
 from copy import deepcopy
-from grademe import graphs
-import dimacs
+from utils.grademe import graphs
+from utils import dimacs
 from solutions.brute import brute_force
 from solutions.simple_backtracking import backtracking
 from solutions.backtracking import backtracking_optimized
@@ -26,7 +26,6 @@ def min_vertex_cover(graph_name: str, G: list[set], solver: callable, *args) -> 
 
 
 def main():
-
     for graph_name in graphs:
         print(graph_name)
         G = dimacs.loadGraph(f"graph/{graph_name}")

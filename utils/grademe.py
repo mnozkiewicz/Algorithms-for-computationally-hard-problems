@@ -2,8 +2,8 @@
 # Test solution for the VertexCover problem
 
 
-from dimacs import *
-from sys import *
+import utils.dimacs
+import sys
 
 # graph list
 graphs = [
@@ -51,15 +51,15 @@ def checkGraph(name):
     s = name + "\t :  "
     size = 99999
     try:
-        G = loadGraph("graph/" + name)
+        G = dimacs.loadGraph("graph/" + name)
         size = len(G)
         C = loadSolution("graph/" + name + ".sol")
     except IOError:
         s += "--- (%d)" % size
         return s, size, False
 
-    E = edgeList(G)
-    if isVC(E, C):
+    E = dimacs.edgeList(G)
+    if dimacs.isVC(E, C):
         s += "OK  (VC = %d)" % len(C)
         return s, len(C), True
     else:
@@ -68,7 +68,7 @@ def checkGraph(name):
 
 
 if __name__ == "__main__":
-    if len(argv) > 1:
+    if len(sys.argv) > 1:
         print("Invocation:")
         print("  python grademe.py")
         print("")

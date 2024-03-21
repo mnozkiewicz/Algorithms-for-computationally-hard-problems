@@ -1,4 +1,4 @@
-from lab1.dimacs import remove_vertex
+from utils.dimacs import remove_vertex
 from lab1.solutions.fast_backtracking import fast_sol
 
 

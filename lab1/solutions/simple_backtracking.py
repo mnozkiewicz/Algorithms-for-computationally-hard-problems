@@ -1,5 +1,5 @@
 from typing import Union
-from lab1.dimacs import remove_edges
+from utils.dimacs import remove_edges
 
 
 def backtracking(G: list[set], k: int, E: set, vertices: set = None) -> Union[bool, set]:
