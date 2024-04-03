@@ -1,5 +1,5 @@
 import sys
-import threading
+import multiprocessing
 from copy import deepcopy
 from utils.grademe import graphs
 from utils import dimacs
@@ -31,15 +31,15 @@ def main():
         G = dimacs.loadGraph(f"graph/{graph_name}")
         E = dimacs.edgeList(G)
 
-        thread = threading.Thread(
+        process = multiprocessing.Process(
             target=min_vertex_cover,
             name="solve",
-            args=(graph_name, G, backtracking_optimized, set(E), set(range(len(G)))),
-            daemon=True
+            args=(graph_name, G, kernel_solve),
         )
 
-        thread.start()
-        thread.join(timeout=5)
+        process.start()
+        process.join(timeout=5)
+        process.terminate()
 
 
 if __name__ == "__main__":

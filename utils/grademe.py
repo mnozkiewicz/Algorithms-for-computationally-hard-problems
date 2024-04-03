@@ -2,7 +2,7 @@
 # Test solution for the VertexCover problem
 
 
-import utils.dimacs
+from utils import dimacs
 import sys
 
 # graph list
@@ -50,10 +50,12 @@ def loadSolution(name):
 def checkGraph(name):
     s = name + "\t :  "
     size = 99999
+
+    path = "../lab1/graph/"
     try:
-        G = dimacs.loadGraph("graph/" + name)
+        G = dimacs.loadGraph(path + name)
         size = len(G)
-        C = loadSolution("graph/" + name + ".sol")
+        C = loadSolution(path + name + ".sol")
     except IOError:
         s += "--- (%d)" % size
         return s, size, False
