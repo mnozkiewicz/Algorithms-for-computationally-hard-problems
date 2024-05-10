@@ -6,25 +6,23 @@ from sat2cnf import sat2cnf
 
 
 def solve(cnf: CNF, var: int) -> Union[set[int], bool]:
-
     cnf.values.add(var)
     if not cnf.propagation(var):
         return False
     if not cnf.clauses:
         return cnf.values
 
-    # if cnf.check_if_2_cnf():
-    #     sol = sat2cnf(cnf.dimacs_form())
-    #     if not sol:
-    #         return False
-    #     return sol.union(cnf.values)
+    if cnf.check_if_2_cnf():
+        sol = sat2cnf(cnf.dimacs_form())
+        if not sol:
+            return False
+        return sol.union(cnf.values)
 
     new_var = cnf.get_variable_with_highest_count()
     return solve(deepcopy(cnf), new_var) or solve(cnf, -new_var)
 
 
 def check_correctness(formula, sol):
-    print(sol)
     for x in sol:
         assert -x not in sol
 

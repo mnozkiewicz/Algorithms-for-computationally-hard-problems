@@ -5,11 +5,10 @@ from typing import Union
 
 
 def sat2cnf(CNF: list[list[int]]) -> Union[bool, set[int]]:
-    V = max(max([abs(x) for x in C]) for C in CNF)
-
+    variables = set(x for clause in CNF for x in clause)
     G = nx.DiGraph()
-    G.add_nodes_from(range(1, V + 1))
-    G.add_nodes_from([-x for x in range(1, V + 1)])
+    G.add_nodes_from(variables)
+    G.add_nodes_from(map(lambda x: -x, variables))
 
     for x, y in CNF:
         G.add_edge(-x, y)
@@ -27,7 +26,7 @@ def sat2cnf(CNF: list[list[int]]) -> Union[bool, set[int]]:
             v2scc[x] = t
         t += 1
 
-    for v in range(1, V + 1):
+    for v in variables:
         if v2scc[v] == v2scc[-v]:
             return False
 
