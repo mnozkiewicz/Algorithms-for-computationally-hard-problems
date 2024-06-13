@@ -51,7 +51,7 @@ def checkGraph(name):
     s = name + "\t :  "
     size = 99999
 
-    path = "../lab1/graph/"
+    path = "../lab5/graph/"
     try:
         G = dimacs.loadGraph(path + name)
         size = len(G)
