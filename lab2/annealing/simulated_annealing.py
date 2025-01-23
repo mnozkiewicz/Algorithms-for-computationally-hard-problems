@@ -1,7 +1,7 @@
 import random
 from math import exp, inf
 import matplotlib.pyplot as plt
-from lab2.annealing.list_set import ListSet
+from .list_set import ListSet
 
 
 def calculate_energy(G: list[set], vertices: ListSet):
@@ -71,7 +71,7 @@ def annealing(G: list[set], k: int, steps=100, T0=100, alpha=0.95, target=-inf):
     return best_set, best_energy, energy_states
 
 
-def simulated_annealing(G: list[set], E: list[tuple], show_plot=False) -> set[int]:
+def solve_simulated_annealing(G: list[set], E: list[tuple], show_plot=False) -> set[int]:
     vertex_cover = False
     energy_states = []
     m = len(E)

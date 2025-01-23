@@ -21,7 +21,7 @@ def reduce_to_sat(size: int, sets: list[list[int]]):
 
 
 if __name__ == '__main__':
-    filenames = [f"x3c/{f}" for f in listdir("x3c") if isfile(join("x3c", f))]
+    filenames = [f"lab3/x3c/{f}" for f in listdir("lab3/x3c") if isfile(join("lab3/x3c", f))]
     x3c_instances = list(map(dimacs.loadX3C, filenames))
 
     for name, x3c in zip(filenames, x3c_instances):

@@ -66,7 +66,7 @@ def graph_coloring(graph: list[set[int]], k: int):
 
 
 if __name__ == '__main__':
-    filenames = [f"graphs/{f}" for f in listdir("graphs") if isfile(join("graphs", f))]
+    filenames = [f"lab3/graphs/{f}" for f in listdir("lab3/graphs") if isfile(join("lab3/graphs", f))]
     graphs = map(dimacs.loadGraph, filenames)
     for graph_name, graph_instance in zip(filenames, graphs):
         if len(dimacs.edgeList(graph_instance)) > 200:

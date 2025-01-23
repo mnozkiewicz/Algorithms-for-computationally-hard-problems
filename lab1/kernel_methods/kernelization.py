@@ -1,5 +1,5 @@
 from utils.dimacs import remove_vertex
-from lab1.solutions.fast_backtracking import fast_sol
+from ..algorithms.fast_backtracking import fast_sol
 
 
 def degree_one(G: list[set], chosen_vertices: set):

@@ -1,7 +1,7 @@
 from queue import PriorityQueue
 
 
-def log_n_approx(G: list[set[int]], E: list[tuple[int, int]]) -> set[int]:
+def solve_log_n_approx(G: list[set[int]], E: list[tuple[int, int]]) -> set[int]:
     n = len(G)
     vertex_cover = set()
     pq = PriorityQueue()

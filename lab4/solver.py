@@ -1,8 +1,8 @@
 from utils.dimacs import loadCNF
 from typing import Union
-from CNF import CNF
 from copy import deepcopy
-from sat2cnf import sat2cnf
+from .sat2cnf import sat2cnf
+from .CNF import CNF
 
 
 def solve(cnf: CNF, var: int) -> Union[set[int], bool]:
@@ -36,16 +36,12 @@ def check_correctness(formula, sol):
 
 
 def main() -> None:
-    # filenames = [
-    #     f"sat_tests/{num}.yes.sat"
-    #     for num in [5, 10, 20, 30, 35, 40, 50, 60, 70, 80, 90, 100]
-    # ]
-    filenames = ["sat_tests/r30_01.dyn.14.sat",
-                 "sat_tests/r30_01.dyn.15.sat",
-                 "sat_tests/r30_01.fast.14.sat",
-                 "sat_tests/r30_01.fast.15.sat",
-                 "sat_tests/r30_01.ins.14.sat",
-                 "sat_tests/r30_01.ins.15.sat"]
+    filenames = ["lab4/sat_tests/r30_01.dyn.14.sat",
+                 "lab4/sat_tests/r30_01.dyn.15.sat",
+                 "lab4/sat_tests/r30_01.fast.14.sat",
+                 "lab4/sat_tests/r30_01.fast.15.sat",
+                 "lab4/sat_tests/r30_01.ins.14.sat",
+                 "lab4/sat_tests/r30_01.ins.15.sat"]
 
     for n, sat_formula in map(loadCNF, filenames):
         cnf = CNF(n, sat_formula)

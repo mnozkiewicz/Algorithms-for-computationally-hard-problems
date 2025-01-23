@@ -2,7 +2,7 @@ from random import shuffle
 from copy import deepcopy
 
 
-def remove_random(G: list[set[int]], E: list[tuple[int, int]], solver: callable, show_info: bool = False) -> set[int]:
+def solve_remove_random(G: list[set[int]], E: list[tuple[int, int]], solver: callable, show_info: bool = False) -> set[int]:
     G_copy = deepcopy(G)
     vertex_cover = solver(G, E)
     vertices = list(vertex_cover)
