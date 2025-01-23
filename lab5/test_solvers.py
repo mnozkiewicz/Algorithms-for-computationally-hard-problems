@@ -5,9 +5,10 @@ import multiprocessing
 import pycosat
 from .dp_reduction import reduce_to_sat
 from .sorter_net import sorter_net
+from typing import Callable
 
 
-def find_min_vertex_cover(graph_name: str, sat_reducer: callable) -> None:
+def find_min_vertex_cover(graph_name: str, sat_reducer: Callable) -> None:
     graph = dimacs.loadGraph(f"lab5/graph/{graph_name}")
     n = len(graph)
     solution = []
