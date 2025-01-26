@@ -1,0 +1,12 @@
+c min degree heuristic
+c status 3 1623172882057
+c min shortcut heuristic
+c run with 0.0/0.1/0.2 min balance and node_min_expansion in endless loop with varying seed
+s td 4 3 6
+b 1 5 2 3
+b 2 1 2 3
+b 3 4
+b 4 6
+1 2
+1 3
+1 4

@@ -1,6 +1,7 @@
 # APTO Piotr Faliszewski 2018
 # Load graph in the DIMACS ascii format
 import os.path
+from typing import Optional
 
 
 def remove_vertex(G: list[set[int]], v: int) -> list[int]:
@@ -99,10 +100,10 @@ def loadGRGraph(name: str) -> list[set]:
 
 class Bag:
     def __init__(self, id):
-        self.id = id
-        self.parent = None
-        self.children = set()
-        self.bag = None
+        self.id: int = id
+        self.parent: Optional[int] = None
+        self.children: set[int] = set()
+        self.bag: set[int] = set()
 
 
 def setParents(Bags: list['Bag'], id: int) -> None:
@@ -158,7 +159,7 @@ def saveGraph(name: str, G: list[set], comment: str) -> None:
         f.write("e %d %d\n" % (x, y))
 
 
-def loadX3C(name: str) -> (int, list[set]):
+def loadX3C(name: str) -> tuple[int, list[set]]:
     """Load an X3C instance in the format:
     n elements
     s set1
@@ -220,7 +221,7 @@ def saveSolution(name: str, C: set) -> None:
     f.close()
 
 
-def loadCNF(name: str) -> (int, list[list[int]]):
+def loadCNF(name: str) -> tuple[int, list[list[int]]]:
     """Load a graph in the DIMACS ascii format from
     the file "name" and return it as a pair (n, CNF),
     where n is the number of variables and CNF is the formula"""
